@@ -1,4 +1,8 @@
-# 44-499 Independent Study Syllabus
+# [44-499 Independent Study Syllabus](https://profcase.github.io/44-499-ind-study-syllabus)
+
+[![Dependency Status](https://img.shields.io/david/nodejs/nodejs.org.svg)](https://david-dm.org/nodejs/nodejs.org)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 * Denise Case
 * Assistant Professor
@@ -6,8 +10,8 @@
 
 ## Links
 
-* Repository: <https://github.com/profcase/44-499-ind-study-syllabus>
-* Webpage: <https://profcase.github.io/44-499-ind-study-syllabus>
+* Site: <https://profcase.github.io/44-499-ind-study-syllabus>
+* Source: <https://github.com/profcase/44-499-ind-study-syllabus>
 
 ## Recommended
 
@@ -17,6 +21,8 @@
 * [Visual Studio Code](https://code.visualstudio.com/) - editor
 * [Tables Generator (HTML)](https://www.tablesgenerator.com/html_tables)
 * [Google Analytics](https://analytics.google.com/analytics/web/)
+* [Bootstrap CDN](https://getbootstrap.com/docs/4.2/getting-started/introduction/)
+* [W3C Markup Validation Service](https://validator.w3.org/)
 
 ## Getting Started
 
