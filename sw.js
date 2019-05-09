@@ -1,8 +1,16 @@
 console.log("Service worker starting");
 
-var CACHE_NAME = '44-499-v1';
-var urlsToCache = [
-  '/',
+const CACHE_NAME = '44-499-v1';
+const CACHE_CONTAINING_ERROR_MESSAGES = '44-499-error-cache'
+const urlsToCache = [
+  '/images/N60-2Stack-Full.jpg',
+  '/images/northwestlogo.jpg',
+  '/images/icons/android/android-launchericon-144-144.png',
+  '/images/icons/android/android-launchericon-192-192.png',
+  '/images/icons/android/android-launchericon-48-48.png',
+  '/images/icons/android/android-launchericon-512-512.png',
+  '/images/icons/android/android-launchericon-72-72.png',
+  '/images/icons/android/android-launchericon-96-96.png',
   '/styles/case-syllabus.css',
   '/scripts/main.js'
 ];
@@ -40,37 +48,30 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Cache hit - return response
         if (response) {
-          console.log('Found ', event.request.url, ' in cache');
+          console.log('Service worker found ', event.request.url, ' in the cache');
           return response;
         }
-        console.log('Network request for ', event.request.url);
-        return fetch(event.request)
-          .then(response => {
-            // Check for valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
+        else {
+          console.log("Service worker fetching updated content from the web");
+          return fetch(event.request)
             // IMPORTANT: Clone the response. A response is a stream 
             // and its body can only be consumed once.
             // We need one for the browser and one for the cache.
-            var responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              })
-              .catch(err => {
-                console.log('Error opening cache ', CACHE_NAME);
-                return;
-              })
-            return response;
-          })
-          .catch(err => {
-            console.log('Error fetching event request ', event.request);
-            return;
-          })
+            .then(res => {
+              console.log("Service worker saving response and returning fetched data")
+              return caches.open(CACHE)
+                .then(cache => {
+                  cache.put(event.request.url, res.clone());
+                  return res;
+                })
+            })
+            .catch(err => {
+              console.log('Service worker unsuccessful fetching event request ', event.request);
+              return caches.open(CACHE_CONTAINING_ERROR_MESSAGES)
+                .then(cache => { return cache.match('Error - not available'); });
+            });
+        }
       })
   );
   console.log("Service worker finished fetch");
