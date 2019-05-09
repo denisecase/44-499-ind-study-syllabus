@@ -1,6 +1,6 @@
 # [MIT License](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2019 Denise Case, Northwest Missouri State University
+Copyright (c) 2019 Denise Case
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
